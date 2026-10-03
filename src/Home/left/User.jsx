@@ -1,9 +1,8 @@
 import React from 'react';
 
 const User = ({ user }) => {
-  // Dynamic user data extraction
-  const name = user?.fullname || user?.name || user?.username || 'User';
-  const email = user?.email || '';
+  const name = user?.fullname || user?.name || user?.username || 'Aritra';
+  const email = user?.email || 'aritra@gmail.com';
 
   return (
     <div className="flex items-center gap-3 p-3 hover:bg-slate-800 rounded-lg cursor-pointer transition duration-150">
