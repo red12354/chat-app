@@ -1,34 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import User from './User';
-import { db } from '../../firebase'; // Tor firebase config path
-import { collection, onSnapshot } from 'firebase/firestore';
 
 const Users = () => {
-  const [users, setUsers] = useState([]);
+  const [userList, setUserList] = useState([]);
 
   useEffect(() => {
-    // Firebase Firestore-er 'users' collection theke live data fetch kora
-    if (db) {
-      const unsubscribe = onSnapshot(collection(db, 'users'), (snapshot) => {
-        const userList = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        setUsers(userList);
-      });
-      return () => unsubscribe();
+    // LocalStorage or Auth State check
+    const storedUser = JSON.parse(localStorage.getItem('ChatUser')) || JSON.parse(localStorage.getItem('user'));
+    
+    if (storedUser) {
+      setUserList([storedUser]);
+    } else {
+      // Fallback dynamic user state
+      setUserList([{ id: 1, name: 'Aritra', email: 'aritra@gmail.com' }]);
     }
   }, []);
 
   return (
-    <div className="flex-1 overflow-y-auto max-h-[80vh]">
-      {users.length > 0 ? (
-        users.map((user) => (
-          <User key={user.id || user.email} user={user} />
+    <div className="flex-1 overflow-y-auto max-h-[80vh] space-y-1">
+      {userList.length > 0 ? (
+        userList.map((u, index) => (
+          <User key={u._id || u.id || index} user={u} />
         ))
       ) : (
         <div className="text-center text-gray-400 py-4 text-sm">
-          No users found
+          No active users
         </div>
       )}
     </div>
