@@ -19,30 +19,30 @@ function App() {
     setAuthUser(null);
   };
 
-  // User logged in thakle Chat App UI dekhabe
-  if (authUser) {
-    return (
-      <div className="flex flex-row w-full min-h-screen">
-        <Logout onLogout={handleLogout} />
-        <Left />
-        <Right />
-      </div>
-    );
-  }
-
-  // Logged out thakle Login / Signup View dekhabe
   return (
-    <div>
-      {isLoginView ? (
-        <Login
-          onLoginSuccess={handleAuthSuccess}
-          onSwitch={() => setIsLoginView(false)}
-        />
+    <div data-theme="light" className="min-h-screen bg-slate-100 text-black">
+      {/* User logged in thakle Chat App UI dekhabe */}
+      {authUser ? (
+        <div className="flex flex-row w-full min-h-screen">
+          <Logout onLogout={handleLogout} />
+          <Left />
+          <Right />
+        </div>
       ) : (
-        <Signup
-          onsignupSuccess={handleAuthSuccess}
-          onSwitch={() => setIsLoginView(true)}
-        />
+        /* Logged out thakle Login / Signup View dekhabe */
+        <div>
+          {isLoginView ? (
+            <Login
+              onLoginSuccess={handleAuthSuccess}
+              onSwitch={() => setIsLoginView(false)}
+            />
+          ) : (
+            <Signup
+              onSignupSuccess={handleAuthSuccess}
+              onSwitch={() => setIsLoginView(true)}
+            />
+          )}
+        </div>
       )}
     </div>
   );
