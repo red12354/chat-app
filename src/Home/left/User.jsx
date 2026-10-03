@@ -1,19 +1,23 @@
-import React from "react";
+import React from 'react';
 
-function User() {
+const User = ({ user }) => {
   return (
-    <div className="flex space-x-4 px-6 py-7 hover:bg-slate-600 duration-300 cursor-pointer">
-      <div className="avatar online">
-        <div className="w-14 rounded-full">
-          <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" alt="user avatar" />
+    <div className="flex items-center gap-3 p-3 hover:bg-slate-800 rounded-lg cursor-pointer transition duration-150">
+      <div className="avatar placeholder">
+        <div className="bg-blue-600 text-white font-bold rounded-full w-10 h-10 flex items-center justify-center text-lg">
+          {user?.name ? user.name.charAt(0).toUpperCase() : (user?.email ? user.email.charAt(0).toUpperCase() : 'U')}
         </div>
       </div>
-      <div>
-        <h1>Deba</h1>
-        <span>Deba@gmail.com</span>
+      <div className="overflow-hidden">
+        <h3 className="font-semibold text-white text-sm truncate">
+          {user?.name || user?.username || 'User'}
+        </h3>
+        <p className="text-xs text-gray-400 truncate">
+          {user?.email || ''}
+        </p>
       </div>
     </div>
   );
-}
+};
 
 export default User;
