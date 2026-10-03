@@ -8,7 +8,6 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log({ email, password });
-    // Tor login hook/function ekhane call korbi (e.g., useLogin)
   };
 
   return (
@@ -22,61 +21,38 @@ const Login = () => {
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Email Input Field */}
-          <div className="form-control w-full">
-            <label className="input input-bordered flex items-center gap-3 !bg-white !text-black border-gray-300 focus-within:border-blue-500 focus-within:outline-none">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 16 16"
-                fill="currentColor"
-                className="w-4 h-4 text-gray-500 flex-shrink-0"
-              >
-                <path d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793l.025.009a6.07 6.07 0 0 1 .715.07l.012.002A10.15 10.15 0 0 0 8 7.318a10.15 10.15 0 0 0 6.248-2.044l.012-.002a6.07 6.07 0 0 1 .715-.07L15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z" />
-                <path d="M15 6.954a10.966 10.966 0 0 1-6.958 2.502A10.966 10.966 0 0 1 1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
-              </svg>
-              <input
-                type="email"
-                className="grow !bg-white !text-black placeholder-gray-400 border-none outline-none focus:outline-none"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                autoComplete="off"
-                required
-              />
-            </label>
+          {/* Email Input */}
+          <div className="relative flex items-center border border-gray-300 rounded-lg bg-white p-3 focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500">
+            <span className="mr-3 text-gray-500">📧</span>
+            <input
+              type="email"
+              className="w-full bg-white text-black placeholder-gray-400 border-none outline-none focus:outline-none focus:ring-0 text-base"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              autoComplete="new-password"
+              required
+            />
           </div>
 
-          {/* Password Input Field */}
-          <div className="form-control w-full">
-            <label className="input input-bordered flex items-center gap-3 !bg-white !text-black border-gray-300 focus-within:border-blue-500 focus-within:outline-none">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 16 16"
-                fill="currentColor"
-                className="w-4 h-4 text-gray-500 flex-shrink-0"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M14 6a4 4 0 0 0-4.899-3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1.5a.5.5 0 0 1 .146-.353l.904-.904A4 4 0 1 0 14 6Zm-4-2a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <input
-                type="password"
-                className="grow !bg-white !text-black placeholder-gray-400 border-none outline-none focus:outline-none"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                autoComplete="off"
-                required
-              />
-            </label>
+          {/* Password Input */}
+          <div className="relative flex items-center border border-gray-300 rounded-lg bg-white p-3 focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500">
+            <span className="mr-3 text-gray-500">🔑</span>
+            <input
+              type="password"
+              className="w-full bg-white text-black placeholder-gray-400 border-none outline-none focus:outline-none focus:ring-0 text-base"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              autoComplete="new-password"
+              required
+            />
           </div>
 
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full btn bg-blue-500 hover:bg-blue-600 text-white font-semibold text-lg border-none normal-case mt-2"
+            className="w-full py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg text-lg transition duration-200 mt-2"
           >
             Login
           </button>
