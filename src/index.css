@@ -31,13 +31,14 @@ body,
 .right-side {
   width: 60%;
 }
-
-/* Chrome, Safari, Edge autofill style override */
+/* Force browser autofill background to stay white and text to stay dark */
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
 input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
     -webkit-text-fill-color: #000000 !important;
-    transition: background-color 5000s ease-in-out 0s;
+    caret-color: #000000 !important;
+    transition: background-color 50000s ease-in-out 0s !important;
 }
+
