@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Login from "./login/Login.jsx";
-import Signup from "./signup/Signup.jsx";
+import Signup from "./signup/signup.jsx";
 import Left from "./Home/left/left.jsx";
 import Right from "./Home/right/right.jsx";
 import Logout from "./Home/left1/Logout.jsx";
@@ -40,7 +40,7 @@ function App() {
         />
       ) : (
         <Signup
-          onSignupSuccess={handleAuthSuccess}
+          onsignupSuccess={handleAuthSuccess}
           onSwitch={() => setIsLoginView(true)}
         />
       )}
