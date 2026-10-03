@@ -10,5 +10,9 @@ export default {
   plugins: [
     require('daisyui'),
   ],
+  daisyui: {
+    themes: ["light"], // Force DaisyUI to use Light theme only
+    darkTheme: "light",
+  },
 }
 

@@ -1,21 +1,19 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({ onLoginSuccess, onSwitch }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Login submitted:', { email, password });
-    // Tor login logic / authentication handler ekhane call korbi
+    if (onLoginSuccess) {
+      onLoginSuccess({ email });
+    }
   };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-slate-100 p-4">
-      <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-xl shadow-lg border border-gray-200">
-        
-        {/* Header */}
+      <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-xl shadow-md border border-gray-200 text-black">
         <div className="text-center space-y-1">
           <h1 className="text-3xl font-bold text-blue-600">Messenger</h1>
           <p className="text-gray-600 font-medium">
@@ -23,40 +21,33 @@ const Login = () => {
           </p>
         </div>
 
-        {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
-          
-          {/* Email Field */}
-          <div className="flex items-center border border-gray-300 rounded-lg p-3 bg-white focus-within:ring-2 focus-within:ring-blue-500">
-            <span className="mr-3 text-lg">📧</span>
+          {/* Email Box */}
+          <div className="flex items-center border border-gray-300 rounded-lg p-3 bg-white">
+            <span className="mr-3 text-lg">✉️</span>
             <input
               type="email"
-              style={{ backgroundColor: '#ffffff', color: '#000000' }}
-              className="w-full text-black placeholder-gray-400 outline-none border-none text-base bg-white"
+              className="w-full bg-white text-black placeholder-gray-500 border-none outline-none text-base"
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              autoComplete="off"
               required
             />
           </div>
 
-          {/* Password Field */}
-          <div className="flex items-center border border-gray-300 rounded-lg p-3 bg-white focus-within:ring-2 focus-within:ring-blue-500">
+          {/* Password Box */}
+          <div className="flex items-center border border-gray-300 rounded-lg p-3 bg-white">
             <span className="mr-3 text-lg">🔑</span>
             <input
               type="password"
-              style={{ backgroundColor: '#ffffff', color: '#000000' }}
-              className="w-full text-black placeholder-gray-400 outline-none border-none text-base bg-white"
+              className="w-full bg-white text-black placeholder-gray-500 border-none outline-none text-base"
               placeholder="Password"
-              value={password}
+              value={email ? password : password}
               onChange={(e) => setPassword(e.target.value)}
-              autoComplete="off"
               required
             />
           </div>
 
-          {/* Submit Button */}
           <button
             type="submit"
             className="w-full py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg text-lg transition duration-200 mt-2"
@@ -65,14 +56,16 @@ const Login = () => {
           </button>
         </form>
 
-        {/* Signup Redirect Link */}
         <div className="text-center text-sm text-gray-600">
           Don't have any Account?{' '}
-          <Link to="/signup" className="text-blue-500 hover:underline font-semibold">
+          <button 
+            type="button"
+            onClick={onSwitch} 
+            className="text-blue-500 hover:underline font-semibold bg-transparent border-none p-0 cursor-pointer"
+          >
             Signup
-          </Link>
+          </button>
         </div>
-
       </div>
     </div>
   );

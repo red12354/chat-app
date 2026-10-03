@@ -25,20 +25,8 @@ body,
 
 .left-side {
   width: 40%;
-  
 }
 
 .right-side {
   width: 60%;
 }
-/* Force browser autofill background to stay white and text to stay dark */
-input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
-    -webkit-text-fill-color: #000000 !important;
-    caret-color: #000000 !important;
-    transition: background-color 50000s ease-in-out 0s !important;
-}
-
