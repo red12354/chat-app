@@ -23,14 +23,14 @@ function Right() {
         </div>
       </div>
 
-      {/* Messages List */}
+      {/* Messages Component - Wrapped safely */}
       <div className="flex-1 overflow-y-auto p-4">
-        <Messages />
+        {Messages ? <Messages /> : <div className="text-gray-400">No messages found</div>}
       </div>
 
-      {/* Input */}
+      {/* TypeSend Component */}
       <div className="p-4 bg-slate-800 border-t border-slate-700">
-        <TypeSend />
+        {TypeSend ? <TypeSend /> : null}
       </div>
     </div>
   );
