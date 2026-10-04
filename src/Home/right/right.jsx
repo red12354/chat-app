@@ -10,7 +10,7 @@ function Right() {
 
   return (
     <div className="w-full bg-slate-900 text-white flex flex-col h-screen">
-      {/* Header */}
+      {/* Top Header */}
       <div className="flex items-center gap-3 p-4 bg-slate-800 border-b border-slate-700">
         <div className="avatar placeholder">
           <div className="bg-blue-600 text-white font-bold rounded-full w-10 h-10 flex items-center justify-center text-lg">
@@ -23,14 +23,14 @@ function Right() {
         </div>
       </div>
 
-      {/* Messages Component - Wrapped safely */}
+      {/* Messages Section */}
       <div className="flex-1 overflow-y-auto p-4">
-        {Messages ? <Messages /> : <div className="text-gray-400">No messages found</div>}
+        <Messages />
       </div>
 
-      {/* TypeSend Component */}
+      {/* Input Section */}
       <div className="p-4 bg-slate-800 border-t border-slate-700">
-        {TypeSend ? <TypeSend /> : null}
+        <TypeSend />
       </div>
     </div>
   );

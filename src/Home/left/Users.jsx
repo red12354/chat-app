@@ -9,7 +9,7 @@ const Users = () => {
     : [{ id: 1, fullname: "Aritra", email: "aritra@gmail.com" }];
 
   return (
-    <div className="flex-1 overflow-y-auto max-h-[80vh] space-y-1">
+    <div className="flex-1 overflow-y-auto space-y-1">
       {userList.map((u) => (
         <User key={u.id} user={u} />
       ))}

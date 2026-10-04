@@ -1,7 +1,7 @@
 import React from 'react';
 
 const User = ({ user }) => {
-  const name = user?.fullname || user?.name || user?.username || 'Aritra';
+  const name = user?.fullname || user?.name || 'Aritra';
   const email = user?.email || 'aritra@gmail.com';
 
   return (
@@ -12,12 +12,8 @@ const User = ({ user }) => {
         </div>
       </div>
       <div className="overflow-hidden">
-        <h3 className="font-semibold text-white text-sm truncate">
-          {name}
-        </h3>
-        <p className="text-xs text-gray-400 truncate">
-          {email}
-        </p>
+        <h3 className="font-semibold text-white text-sm truncate">{name}</h3>
+        <p className="text-xs text-gray-400 truncate">{email}</p>
       </div>
     </div>
   );
