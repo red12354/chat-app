@@ -4,22 +4,23 @@ const useGetAllUsers = () => {
   const [allUsers, setAllUsers] = useState([]);
 
   useEffect(() => {
-    // LocalStorage theke active logged-in user dynamically render kora
     const storedUser = JSON.parse(localStorage.getItem('ChatUser')) || JSON.parse(localStorage.getItem('user'));
 
+    let name = 'Aritra';
+    let email = 'aritra@gmail.com';
+
     if (storedUser) {
-      setAllUsers([{
-        _id: storedUser._id || '1',
-        fullname: storedUser.fullname || storedUser.name || 'Aritra',
-        email: storedUser.email || 'aritra@gmail.com'
-      }]);
-    } else {
-      setAllUsers([{
-        _id: '1',
-        fullname: 'Aritra',
-        email: 'aritra@gmail.com'
-      }]);
+      if (storedUser.fullname) name = storedUser.fullname;
+      else if (storedUser.name) name = storedUser.name;
+
+      if (storedUser.email) email = storedUser.email;
     }
+
+    setAllUsers([{
+      _id: '1',
+      fullname: name,
+      email: email
+    }]);
   }, []);
 
   return [allUsers];

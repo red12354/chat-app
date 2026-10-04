@@ -3,10 +3,18 @@ import User from './User';
 
 const Users = () => {
   const storedUser = JSON.parse(localStorage.getItem('ChatUser')) || JSON.parse(localStorage.getItem('user'));
-  
-  const userList = storedUser 
-    ? [{ id: 1, fullname: storedUser.fullname || storedUser.name || "Aritra", email: storedUser.email || "aritra@gmail.com" }]
-    : [{ id: 1, fullname: "Aritra", email: "aritra@gmail.com" }];
+
+  let name = 'Aritra';
+  let email = 'aritra@gmail.com';
+
+  if (storedUser) {
+    if (storedUser.fullname) name = storedUser.fullname;
+    else if (storedUser.name) name = storedUser.name;
+
+    if (storedUser.email) email = storedUser.email;
+  }
+
+  const userList = [{ id: 1, fullname: name, email: email }];
 
   return (
     <div className="flex-1 overflow-y-auto space-y-1">
