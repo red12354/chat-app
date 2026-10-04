@@ -1,18 +1,21 @@
-import React from "react";
-import Message from "./Message.jsx";
+import React from 'react';
 
-export default function Messages({ messages }) {
+function Messages() {
+  const messages = []; 
+
   return (
-    <div className="flex-1 p-4 overflow-y-auto space-y-3 bg-slate-800">
-      {messages.length === 0 ? (
-        <div className="flex h-full items-center justify-center">
-          <p className="text-gray-400 text-sm">
-            No messages yet. Send a message to start chatting!
-          </p>
-        </div>
+    <div className="flex-1 overflow-y-auto p-4 flex flex-col justify-center items-center text-gray-400">
+      {messages && messages.length > 0 ? (
+        messages.map((msg, index) => (
+          <div key={index} className="chat chat-start my-2">
+            <div className="chat-bubble">{msg.text || msg}</div>
+          </div>
+        ))
       ) : (
-        messages.map((msg, index) => <Message key={index} message={msg} />)
+        <p className="text-sm">No messages yet. Start a conversation!</p>
       )}
     </div>
   );
 }
+
+export default Messages;
